@@ -14,6 +14,11 @@ if [ `getconf LONG_BIT` == "32" ]; then
 	echo "[*] PocketMine-MP is no longer supported on 32-bit systems."
 	exit 1
 fi
+if [[ "$TERMUX_VERSION" < "0.118.0" ]]; then
+  echo -e "Please use the lastest version of Termux\nFor more Information: https://github.com/termux/termux-app#Installation"
+  exit 1
+fi
+echo "[*] Installing/updating PocketMine-MP on directory ./"
 mkdir -p ./bin/php7/bin/
 echo "[*] Installing PHP 8.0.22 Binary"
 curl -s -o php https://github.com/DaisukeDaisuke/AndroidPHP/releases/download/{PHP_VER}/php
