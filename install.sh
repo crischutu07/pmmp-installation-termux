@@ -1,5 +1,5 @@
 #!/data/data/com.termux/files/usr/bin/bash
-PMMP_VER="4.10.11"
+PMMP_VER="4.10.1"
 PHP_VER="8.0.22"
 if ! command -v curl &> /dev/null; then
   echo "[*] Command curl not found"
