@@ -26,9 +26,9 @@ if [[ "$TERMUX_VERSION" < "0.118.0" ]]; then
 fi
 # Export variable after checking command
 CHANNEL=$(curl -s https://update.pmmp.io/api | jq -r ".channel")
+CHANNEL_QUOTE=$(curl -s https://update.pmmp.io/api | jq ".channel")
 PHP_VER="8.0.22"
-alias shortcut_pmmp="curl -s https://update.pmmp.io/api | jq -r"
-echo -e `[*] Retrieving latest build data for channel "$CHANNEL"`
+echo -e "[*] Retrieving latest build data for channel ${CHANNEL_QUOTE}"
 PMMP_VER=$(curl -s https://update.pmmp.io/api | jq -r ".base_version")
 MCPE_VER=$(curl -s https://update.pmmp.io/api | jq -r ".mcpe_version")
 PHP_PMMP=$(curl -s https://update.pmmp.io/api | jq -r ".date")
