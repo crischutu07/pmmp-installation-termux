@@ -4,7 +4,7 @@ if ! command -v curl &> /dev/null; then
   exit 1
 fi
 if ! command -v wget &> /dev/null; then
-  echo "[*] Command curl not found"
+  echo "[*] Command wget not found"
   exit 1
 fi
 if ! command -v getconf &> /dev/null; then
