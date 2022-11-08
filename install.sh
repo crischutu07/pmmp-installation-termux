@@ -3,6 +3,10 @@ if ! command -v curl &> /dev/null; then
   echo "[*] Command curl not found"
   exit 1
 fi
+if ! command -v wget &> /dev/null; then
+  echo "[*] Command curl not found"
+  exit 1
+fi
 if ! command -v getconf &> /dev/null; then
   echo "[*] Command getconf not found"
   exit 1
@@ -23,7 +27,7 @@ fi
 # Export variable after checking command
 PMMP_VER=$(curl -s https://update.pmmp.io/api | jq -r ".base_version")
 MCPE_VER=$(curl -s https://update.pmmp.io/api | jq -r ".mcpe_version")
-
+PHP_VER="8.0.22"
 echo "[*] Installing/updating PocketMine-MP on directory ./"
 mkdir -p ./bin/php7/bin/
 
