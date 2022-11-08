@@ -1,13 +1,14 @@
 #!/data/data/com.termux/files/usr/bin/bash
-PMMP_VER="4.10.1"
-PHP_VER="8.0.22"
-
 if ! command -v curl &> /dev/null; then
   echo "[*] Command curl not found"
   exit 1
 fi
 if ! command -v getconf &> /dev/null; then
   echo "[*] Command getconf not found"
+  exit 1
+fi
+if ! command -v jq &> /dev/null; then
+  echo "[*] Command jq not found"
   exit 1
 fi
 
@@ -19,6 +20,10 @@ if [[ "$TERMUX_VERSION" < "0.118.0" ]]; then
   echo -e "Please use the lastest version of Termux\nFor more Information: https://github.com/termux/termux-app#Installation"
   exit 1
 fi
+# Export variable after checking command
+PMMP_VER=$(curl -s https://update.pmmp.io/api | jq -r ".base_version")
+MCPE_VER=$(curl -s https://update.pmmp.io/api | jq -r ".mcpe_version")
+
 echo "[*] Installing/updating PocketMine-MP on directory ./"
 mkdir -p ./bin/php7/bin/
 
