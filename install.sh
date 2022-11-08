@@ -1,5 +1,4 @@
 #!/data/data/com.termux/files/usr/bin/bash
-alias shortcut_pmmp="curl -s https://update.pmmp.io/api | jq -r"
 if ! command -v curl &> /dev/null; then
   echo "[*] Command curl not found"
   exit 1
@@ -28,6 +27,7 @@ fi
 # Export variable after checking command
 CHANNEL=$(shortcut_pmmp ".channel")
 PHP_VER="8.0.22"
+alias shortcut_pmmp="curl -s https://update.pmmp.io/api | jq -r"
 echo -e `[*] Retrieving latest build data for channel "$CHANNEL"`
 PMMP_VER=$(shortcut_pmmp ".base_version")
 MCPE_VER=$(shortcut_pmmp ".mcpe_version")
