@@ -23,15 +23,15 @@ echo "[*] Installing/updating PocketMine-MP on directory ./"
 mkdir -p ./bin/php7/bin/
 
 echo -e "[*] Installing PHP ${PHP_VER} Binary"
-curl -s -o php https://github.com/DaisukeDaisuke/AndroidPHP/releases/download/${PHP_VER}/php
+wget -q -O php https://github.com/DaisukeDaisuke/AndroidPHP/releases/download/${PHP_VER}/php
 mv php ./bin/php7/bin
-curl -s -o php.ini https://github.com/DaisukeDaisuke/AndroidPHP/releases/download/${PHP_VER}/php-pm4.ini
+wget -q -O php.ini https://github.com/DaisukeDaisuke/AndroidPHP/releases/download/${PHP_VER}/php-pm4.ini
 mv php.ini ./bin/php7/bin/
 chmod +x ./bin/php7/bin/php
 
 echo -e "[*] Installing PocketMine-MP ${PMMP_VER}"
-curl -s -o PocketMine-MP.phar https://github.com/pmmp/PocketMine-MP/releases/download/${PMMP_VER}/PocketMine-MP.phar
-curl -s -o start.sh https://raw.githubusercontent.com/pmmp/PocketMine-MP/${PMMP_VER}/start.sh
+wget -q -O PocketMine-MP.phar https://github.com/pmmp/PocketMine-MP/releases/download/${PMMP_VER}/PocketMine-MP.phar
+wget -q -O start.sh https://raw.githubusercontent.com/pmmp/PocketMine-MP/${PMMP_VER}/start.sh
 chmod +x start.sh
 
 echo -e "[*] Everything done! Run ./start.sh to start PocketMine-MP"
