@@ -33,6 +33,8 @@ MCPE_VER=$(curl -s https://update.pmmp.io/api | jq -r ".mcpe_version")
 PHP_PMMP=$(curl -s https://update.pmmp.io/api | jq -r ".php_version")
 DATE=(curl -s https://update.pmmp.io/api| jq -r ".date")
 BUILD=$(curl -s https://update.pmmp.io/api | jq -r ".build")
+DATE_CONVERT=$(date --date="@${DATE})
+
 echo -e "[*] Found PocketMine-MP ${PMMP_VER} (build ${BUILD}) for Minecraft: PE v${MCPE_VER} (PHP ${PHP_PMMP})"
 echo "[*] Installing/updating PocketMine-MP on directory ./"
 mkdir -p ./bin/php7/bin/
