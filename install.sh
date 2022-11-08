@@ -1,4 +1,5 @@
 #!/data/data/com.termux/files/usr/bin/bash
+alias shortcut_pmmp="curl -s https://update.pmmp.io/api | jq -r"
 if ! command -v curl &> /dev/null; then
   echo "[*] Command curl not found"
   exit 1
@@ -25,22 +26,22 @@ if [[ "$TERMUX_VERSION" < "0.118.0" ]]; then
   exit 1
 fi
 # Export variable after checking command
-CHANNEL=$(curl -s https://update.pmmp.io/api | jq -r ".channel")
+CHANNEL=$(shortcut_pmmp ".channel")
 PHP_VER="8.0.22"
-echo -e '[*] Retrieving latest build data for channel "${CHANNEL}"'
-PMMP_VER=$(curl -s https://update.pmmp.io/api | jq -r ".base_version")
-MCPE_VER=$(curl -s https://update.pmmp.io/api | jq -r ".mcpe_version")
-PHP_PMMP=$(curl -s https://update.pmmp.io/api | jq -r ".php_version")
-DATE=(curl -s https://update.pmmp.io/api| jq -r ".date")
-BUILD=$(curl -s https://update.pmmp.io/api | jq -r ".build")
+echo -e `[*] Retrieving latest build data for channel "$CHANNEL"`
+PMMP_VER=$(shortcut_pmmp ".base_version")
+MCPE_VER=$(shortcut_pmmp ".mcpe_version")
+PHP_PMMP=$(shortcut_pmmp  ".php_version")
+DATE=(shortcut_pmmp ".date")
+BUILD=$(shortcut_pmml ".build")
 DATE_CONVERT=$(date --date="@${DATE})
-echo -e "[*] This stable build was released on ${DATE_CONVERT}"
+echo -e "[*] This stable build was released on $DATE_CONVERT"
 
-echo -e "[*] Found PocketMine-MP ${PMMP_VER} (build ${BUILD}) for Minecraft: PE v${MCPE_VER} (PHP ${PHP_PMMP})"
+echo -e "[*] Found PocketMine-MP $PMMP_VER (build $BUILD) for Minecraft: PE v$MCPE_VER (PHP $PHP_PMMP})"
 echo "[*] Installing/updating PocketMine-MP on directory ./"
 mkdir -p ./bin/php7/bin/
 
-echo -e "[*] Installing PHP ${PHP_VER} Binary"
+echo -e "[*] Installing PHP $PHP_VER Binary"
 wget -q -O php https://github.com/DaisukeDaisuke/AndroidPHP/releases/download/${PHP_VER}/php
 mv php ./bin/php7/bin
 wget -q -O php.ini https://github.com/DaisukeDaisuke/AndroidPHP/releases/download/${PHP_VER}/php-pm4.ini
