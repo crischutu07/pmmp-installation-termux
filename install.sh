@@ -14,7 +14,6 @@ if [ `getconf LONG_BIT` == "32" ]; then
 	echo "[*] PocketMine-MP is no longer supported on 32-bit systems."
 	exit 1
 fi
-
 mkdir -p ./bin/php7/bin/
 echo "[*] Installing PHP 8.0.22 Binary"
 curl -s -o php https://github.com/DaisukeDaisuke/AndroidPHP/releases/download/{PHP_VER}/php
