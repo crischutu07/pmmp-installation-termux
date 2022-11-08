@@ -31,6 +31,7 @@ echo -e '[*] Retrieving latest build data for channel "${CHANNEL}"'
 PMMP_VER=$(curl -s https://update.pmmp.io/api | jq -r ".base_version")
 MCPE_VER=$(curl -s https://update.pmmp.io/api | jq -r ".mcpe_version")
 PHP_PMMP=$(curl -s https://update.pmmp.io/api | jq -r ".php_version")
+DATE=(curl -s https://update.pmmp.io/api| jq -r ".date")
 BUILD=$(curl -s https://update.pmmp.io/api | jq -r ".build")
 echo -e "[*] Found PocketMine-MP ${PMMP_VER} (build ${BUILD}) for Minecraft: PE v${MCPE_VER} (PHP ${PHP_PMMP})"
 echo "[*] Installing/updating PocketMine-MP on directory ./"
