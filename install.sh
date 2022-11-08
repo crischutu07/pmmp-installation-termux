@@ -26,7 +26,7 @@ mv php ./bin/php7/bin
 curl -s -o php.ini https://github.com/DaisukeDaisuke/AndroidPHP/releases/download/{PHP_VER}/php-pm4.ini
 mv php.ini ./bin/php7/bin/
 chmod +x ./bin/php7/bin/php
-echo -e "[*] Installing PocketMine-MP {PMMP_VER}"
+echo -e "[*] Installing PocketMine-MP ${PMMP_VER}"
 curl -s -o PocketMine-MP.phar https://github.com/pmmp/PocketMine-MP/releases/download/{PMMP_VER}/PocketMine-MP.phar/
 curl -s -o start.sh https://github.com/pmmp/PocketMine-MP/releases/download/{PMMP_VER}/start.sh/
 chmod +x start.sh
