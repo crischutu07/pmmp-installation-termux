@@ -17,8 +17,8 @@ if ! command -v jq &> /dev/null; then
 fi
 
 if [ `getconf LONG_BIT` == "32" ]; then
-	echo "[*] PocketMine-MP is no longer supported on 32-bit systems."
-	exit 1
+        echo "[*] PocketMine-MP is no longer supported on 32-bit systems."
+        exit 1
 fi
 if [[ "$TERMUX_VERSION" < "0.118.0" ]]; then
   echo -e "Please use the lastest version of Termux\nFor more Information: https://github.com/termux/termux-app#Installation"
@@ -31,9 +31,9 @@ PHP_VER="8.0.22"
 echo -e "[*] Retrieving latest build data for channel ${CHANNEL_QUOTE}"
 PMMP_VER=$(curl -s https://update.pmmp.io/api | jq -r ".base_version")
 MCPE_VER=$(curl -s https://update.pmmp.io/api | jq -r ".mcpe_version")
-PHP_PMMP=$(curl -s https://update.pmmp.io/api | jq -r ".date")
+PHP_PMMP=$(curl -s https://update.pmmp.io/api | jq -r ".php_version")
 BUILD=$(curl -s https://update.pmmp.io/api | jq -r ".build")
-DATE_CONVERT=$(date --date="@${DATE})
+DATE_CONVERT=$(date --date="@${DATE}")
 echo -e "[*] This stable build was released on $DATE_CONVERT"
 
 echo -e "[*] Found PocketMine-MP ${PMMP_VER} (build ${BUILD}) for Minecraft: PE v${MCPE_VER} (PHP ${PHP_PMMP})"
