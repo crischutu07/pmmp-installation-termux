@@ -26,7 +26,7 @@ if [ `getconf LONG_BIT` == "32" ]; then
         exit 1
 fi
 # Check user if Termux Version is not 0.118.0
-if [[ "$TERMUX_VERSION" == "0.118.0" ]]; then
+if [[ "$TERMUX_VERSION" < "0.118.0" ]]; then
   echo -e "Please use the lastest version of Termux\nFor more Information: https://github.com/termux/termux-app#Installation"
   exit 1
 fi
