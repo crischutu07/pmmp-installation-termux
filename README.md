@@ -6,4 +6,4 @@ Make sure you're using the lastest version of Termux by downloading on [F-Droid]
 If you're have `curl` then run this
 ```
 curl https://raw.githubusercontent.com/crischutu07/pmmp-installation-termux/main/install.sh | bash -s -
-``|
+```
