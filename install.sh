@@ -18,8 +18,13 @@ if ! command -v jq &> /dev/null; then
 fi
 
 if [ `getconf LONG_BIT` == "32" ]; then
-        echo "[*] PocketMine-MP is no longer supported on 32-bit systems."
-        exit 1
+        echo -e "[*] PocketMine-MP is no longer supported on 32-bit systems."
+        read -p "[*] Do you want to continue this installation? [Y/N] " confirm
+        case $confirm in
+        [Yy]* ) :;;
+        [Nn]* ) exit 1;;
+        * ) exit 1;;
+    esac
 fi
 # Check user if Termux Version is not 0.118.0
 if [[ "$TERMUX_VERSION" < "0.118.0" ]]; then
