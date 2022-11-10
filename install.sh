@@ -1,17 +1,21 @@
 #!/data/data/com.termux/files/usr/bin/bash
-## Checking commands if it exists 
+## Checking commands if it exists
+# TARGET: Using curl for checking pmmp API with jq 
 if ! command -v curl &> /dev/null; then
   echo "[*] Command curl not found"
   exit 1
 fi
+# TARGET: Install files (php binary, pmmp phar files and start.sh)
 if ! command -v wget &> /dev/null; then
   echo "[*] Command wget not found"
   exit 1
 fi
+# TARGET: Check user if it using 32-bits device
 if ! command -v getconf &> /dev/null; then
   echo "[*] Command getconf not found"
   exit 1
 fi
+#TARGET: JSON Parse and same thing on checking curl 
 if ! command -v jq &> /dev/null; then
   echo "[*] Command jq not found"
   exit 1
