@@ -39,6 +39,7 @@ PMMP_VER=$(curl -s https://update.pmmp.io/api | jq -r ".base_version")
 MCPE_VER=$(curl -s https://update.pmmp.io/api | jq -r ".mcpe_version")
 PHP_PMMP=$(curl -s https://update.pmmp.io/api | jq -r ".php_version")
 BUILD=$(curl -s https://update.pmmp.io/api | jq -r ".build")
+DATE=$(curl -s https://update.pmmp.io/api | jq -r ".date")
 DATE_CONVERT=$(date --date="@${DATE}")
 echo -e "[*] This stable build was released on $DATE_CONVERT"
 
