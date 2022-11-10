@@ -1,10 +1,6 @@
 #!/data/data/com.termux/files/usr/bin/bash
 ## Checking commands if it exists
-# TARGET: Using curl for checking pmmp API with jq 
-if ! command -v curl &> /dev/null; then
-  echo "[*] Command curl not found"
-  exit 1
-fi
+
 # TARGET: Install files (php binary, pmmp phar files and start.sh)
 if ! command -v wget &> /dev/null; then
   echo "[*] Command wget not found"
