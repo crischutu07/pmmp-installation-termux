@@ -9,4 +9,3 @@ curl -sL https://raw.githubusercontent.com/crischutu07/pmmp-installation-termux/
 ```
 # Demo Installation
 [![asciicast](https://asciinema.org/a/550864.svg)](https://asciinema.org/a/550864)
-<script id="asciicast-550864" src="https://asciinema.org/a/550864.js" async></script>
