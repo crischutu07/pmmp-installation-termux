@@ -1,21 +1,12 @@
 #!/data/data/com.termux/files/usr/bin/bash
 ## Checking commands if it exists
 
-# TARGET: Install files (php binary, pmmp phar files and start.sh)
-if ! command -v wget &> /dev/null; then
-  echo "[*] Command wget not found"
-  exit 1
-fi
-# TARGET: Check user if it using 32-bits device
-if ! command -v getconf &> /dev/null; then
-  echo "[*] Command getconf not found"
-  exit 1
-fi
-#TARGET: JSON Parse and same thing on checking curl 
-if ! command -v jq &> /dev/null; then
-  echo "[*] Command jq not found"
-  exit 1
-fi
+dependencies=( jq getconf curl wget )
+for i in "${dependencies[@]}"; do
+  package_manager='apt install'
+  [[ $(command -v "$i") == "" ]] && $package_manager "$i" > /dev/null
+done
+unset -v package_manager
 
 if [ `getconf LONG_BIT` == "32" ]; then
         echo -e "[*] PocketMine-MP is no longer supported on 32-bit systems."
