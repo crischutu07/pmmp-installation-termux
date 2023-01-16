@@ -3,7 +3,7 @@ PocketMine-MP Installation for Termux
 
 Make sure you're using the lastest version of Termux by downloading on [F-Droid](https://f-droid.org/en/packages/com.termux/) or [Github](https://github.com/termux/termux-app/releases)
 
-WARNING: This script is free to use, and we don't copy from [get.pmmp.io](https://get.pmmp.io). 
+WARNING: This script is free to use, and we don't copy from [get.pmmp.io](https://get.pmmp.io). Please don't do false report for their repository!
 # Installation
 Step 1: Update & Upgrade Packages
 ```bash
