@@ -8,11 +8,11 @@ Step 1: Update & Upgrade Packages
 pkg update && pkg upgrade -y
 ```
 Step 2: Install some dependencies packages
-```
+```bash
 apt install jq curl wget getconf -y
 ```
 Step 3: use this command + create new directory to using as pmmp folder then run the script below
-```
+```bash
 mkdir pmmp 
 cd pmmp
 curl -sL https://raw.githubusercontent.com/crischutu07/pmmp-installation-termux/main/install.sh | bash -s -
