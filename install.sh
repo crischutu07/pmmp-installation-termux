@@ -3,8 +3,8 @@
 
 dependencies=( jq getconf curl wget )
 for i in "${dependencies[@]}"; do
-  package_manager='apt install'
-  [[ $(command -v "$i") == "" ]] && $package_manager "$i" > /dev/null
+  package_manager='apt install -y'
+  [[ $(command -v "$i") == "" ]] && $package_manager "$i" &> /dev/null
 done
 unset -v package_manager
 
