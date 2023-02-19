@@ -21,4 +21,4 @@ curl -sL https://raw.githubusercontent.com/crischutu07/pmmp-installation-termux/
 bash start.sh
 ```
 # Demo Installation
-[![asciicast](https://asciinema.org/a/550864.svg)](https://asciinema.org/a/550864)
+[![asciicast](https://asciinema.org/a/560881.svg)](https://asciinema.org/a/560881)
