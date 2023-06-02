@@ -24,14 +24,14 @@ if [[ "$TERMUX_VERSION" < "0.118.0" ]]; then
 fi
 # Export variable after checking command
 SERVER="$(curl -s https://update.pmmp.io/api)"
-CHANNEL=$(jq -r ".channel" < $SERVER)
-CHANNEL_QUOTE=$(jq ".channel" < $SERVER)
+CHANNEL=$(jq -r ".channel" <<< $SERVER)
+CHANNEL_QUOTE=$(jq ".channel" <<< $SERVER)
 echo -e "[*] Retrieving latest build data for channel ${CHANNEL_QUOTE}"
-PMMP_VER=$(jq -r ".base_version" < $SERVER)
-MCPE_VER=$(jq -r ".mcpe_version" < $SERVER)
-PHP_PMMP=$(jq -r ".php_version" < $SERVER)
-BUILD=$(jq -r ".build" < $SERVER)
-DATE=$(jq -r ".date" < $SERVER)
+PMMP_VER=$(jq -r ".base_version" <<< $SERVER)
+MCPE_VER=$(jq -r ".mcpe_version" <<< $SERVER)
+PHP_PMMP=$(jq -r ".php_version" <<< $SERVER)
+BUILD=$(jq -r ".build" <<< $SERVER)
+DATE=$(jq -r ".date" <<< $SERVER)
 DATE_CONVERT=$(date --date="@${DATE}")
 echo -e "[*] This stable build was released on $DATE_CONVERT"
 echo -e "[*] Found PocketMine-MP ${PMMP_VER} (build ${BUILD}) for Minecraft: PE v${MCPE_VER} (PHP ${PHP_PMMP})"
