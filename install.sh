@@ -23,25 +23,24 @@ if [[ "$TERMUX_VERSION" < "0.118.0" ]]; then
   exit 1
 fi
 # Export variable after checking command
-CHANNEL=$(curl -s https://update.pmmp.io/api | jq -r ".channel")
-CHANNEL_QUOTE=$(curl -s https://update.pmmp.io/api | jq ".channel")
-PHP_VER="8.0.22" 
+SERVER="$(curl -s https://update.pmmp.io/api)"
+CHANNEL=$(jq -r ".channel" | cat $SERVER)
+CHANNEL_QUOTE=$(jq ".channel" < $SERVER)
 echo -e "[*] Retrieving latest build data for channel ${CHANNEL_QUOTE}"
-PMMP_VER=$(curl -s https://update.pmmp.io/api | jq -r ".base_version")
-MCPE_VER=$(curl -s https://update.pmmp.io/api | jq -r ".mcpe_version")
-PHP_PMMP=$(curl -s https://update.pmmp.io/api | jq -r ".php_version")
-BUILD=$(curl -s https://update.pmmp.io/api | jq -r ".build")
-DATE=$(curl -s https://update.pmmp.io/api | jq -r ".date")
+PMMP_VER=$(jq -r ".base_version" < $SERVER)
+MCPE_VER=$(jq -r ".mcpe_version" < $SERVER)
+PHP_PMMP=$(jq -r ".php_version" < $SERVER)
+BUILD=$(jq -r ".build" < $SERVER)
+DATE=$(jq -r ".date" < $SERVER)
 DATE_CONVERT=$(date --date="@${DATE}")
 echo -e "[*] This stable build was released on $DATE_CONVERT"
-
 echo -e "[*] Found PocketMine-MP ${PMMP_VER} (build ${BUILD}) for Minecraft: PE v${MCPE_VER} (PHP ${PHP_PMMP})"
 echo "[*] Installing/updating PocketMine-MP on directory ./"
 mkdir -p ./bin/php7/bin/
 ## Install php binary for ARM Device
-wget -q -O php https://github.com/DaisukeDaisuke/AndroidPHP/releases/download/${PHP_VER}/php
+wget $(curl -s https://api.github.com/repos/DaisukeDaisuke/AndroidPHP/releases | jq -r .[0].assets[1].browser_download_url)
 mv php ./bin/php7/bin
-wget -q -O php.ini https://github.com/DaisukeDaisuke/AndroidPHP/releases/download/${PHP_VER}/php-pm4.ini
+wget $(curl -s https://api.github.com/repos/DaisukeDaisuke/AndroidPHP/releases | jq -r .[0].assets[0].browser_download_url)
 mv php.ini ./bin/php7/bin/
 chmod +x ./bin/php7/bin/php
 # Install PMMP
