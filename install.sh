@@ -1,6 +1,5 @@
 #!/data/data/com.termux/files/usr/bin/bash
 ## Checking commands if it exists
-
 dependencies=( jq getconf curl wget )
 for i in "${dependencies[@]}"; do
   package_manager='apt install -y'
@@ -40,7 +39,7 @@ mkdir -p ./bin/php7/bin/
 ## Install php binary for ARM Device
 wget -q $(curl -s https://api.github.com/repos/DaisukeDaisuke/AndroidPHP/releases | jq -r .[0].assets[1].browser_download_url)
 mv php ./bin/php7/bin
-wget -q $(curl -s https://api.github.com/repos/DaisukeDaisuke/AndroidPHP/releases | jq -r .[0].assets[0].browser_download_url)
+wget -q $(curl -s https://api.github.com/repos/DaisukeDaisuke/AndroidPHP/releases | jq -r .[0].assets[8].browser_download_url)
 mv php.ini ./bin/php7/bin/
 chmod +x ./bin/php7/bin/php
 # Install PMMP
