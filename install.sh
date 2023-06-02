@@ -24,7 +24,7 @@ if [[ "$TERMUX_VERSION" < "0.118.0" ]]; then
 fi
 # Export variable after checking command
 SERVER="$(curl -s https://update.pmmp.io/api)"
-CHANNEL=$(jq -r ".channel" | cat $SERVER)
+CHANNEL=$(jq -r ".channel" < $SERVER)
 CHANNEL_QUOTE=$(jq ".channel" < $SERVER)
 echo -e "[*] Retrieving latest build data for channel ${CHANNEL_QUOTE}"
 PMMP_VER=$(jq -r ".base_version" < $SERVER)
@@ -38,9 +38,9 @@ echo -e "[*] Found PocketMine-MP ${PMMP_VER} (build ${BUILD}) for Minecraft: PE 
 echo "[*] Installing/updating PocketMine-MP on directory ./"
 mkdir -p ./bin/php7/bin/
 ## Install php binary for ARM Device
-wget $(curl -s https://api.github.com/repos/DaisukeDaisuke/AndroidPHP/releases | jq -r .[0].assets[1].browser_download_url)
+wget -q $(curl -s https://api.github.com/repos/DaisukeDaisuke/AndroidPHP/releases | jq -r .[0].assets[1].browser_download_url)
 mv php ./bin/php7/bin
-wget $(curl -s https://api.github.com/repos/DaisukeDaisuke/AndroidPHP/releases | jq -r .[0].assets[0].browser_download_url)
+wget -q $(curl -s https://api.github.com/repos/DaisukeDaisuke/AndroidPHP/releases | jq -r .[0].assets[0].browser_download_url)
 mv php.ini ./bin/php7/bin/
 chmod +x ./bin/php7/bin/php
 # Install PMMP
