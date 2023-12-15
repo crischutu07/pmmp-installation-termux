@@ -1,4 +1,5 @@
 #!/data/data/com.termux/files/usr/bin/bash
+# crischutu07
 ## Checking commands if it exists
 dependencies=( jq getconf curl wget )
 for i in "${dependencies[@]}"; do
